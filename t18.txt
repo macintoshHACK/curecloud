@@ -1,0 +1,39 @@
+
+INSERT INTO Category (Generic_Name, Description) VALUES
+('Lisinopril', '10mg tablets');
+
+INSERT INTO Drug_Square (Medicine_Name, Category_ID, Strip_Price, Unit_Price, Expire_Date, Manufacturing_Date, representative_id)
+VALUES
+('Lisipro', (SELECT ID FROM Category WHERE Generic_Name = 'Lisinopril' AND Description = '10mg tablets' LIMIT 1), 15.00, 1.50, '2025-11-25', '2022-11-25', 11);
+
+INSERT INTO Drug_Square (Medicine_Name, Category_ID, Strip_Price, Unit_Price, Expire_Date, Manufacturing_Date, representative_id)
+VALUES
+('Prilix', (SELECT ID FROM Category WHERE Generic_Name = 'Lisinopril' AND Description = '10mg tablets' LIMIT 1), 15.00, 1.50, '2025-11-25', '2022-11-25', 3);
+
+INSERT INTO Drug_Square (Medicine_Name, Category_ID, Strip_Price, Unit_Price, Expire_Date, Manufacturing_Date, representative_id)
+VALUES
+('Lisipure', (SELECT ID FROM Category WHERE Generic_Name = 'Lisinopril' AND Description = '10mg tablets' LIMIT 1), 15.00, 1.50, '2025-11-25', '2022-11-25', 4);
+
+INSERT INTO Drug_Square (Medicine_Name, Category_ID, Strip_Price, Unit_Price, Expire_Date, Manufacturing_Date, representative_id)
+VALUES
+('Zestriflow', (SELECT ID FROM Category WHERE Generic_Name = 'Lisinopril' AND Description = '10mg tablets' LIMIT 1), 15.00, 1.50, '2025-11-25', '2022-11-25', 5);
+
+INSERT INTO Drug_Square (Medicine_Name, Category_ID, Strip_Price, Unit_Price, Expire_Date, Manufacturing_Date, representative_id)
+VALUES
+('Lisiflex', (SELECT ID FROM Category WHERE Generic_Name = 'Lisinopril' AND Description = '10mg tablets' LIMIT 1), 15.00, 1.50, '2025-11-25', '2022-11-25', 6);
+
+INSERT INTO Drug_Square (Medicine_Name, Category_ID, Strip_Price, Unit_Price, Expire_Date, Manufacturing_Date, representative_id)
+VALUES
+('Prilicare', (SELECT ID FROM Category WHERE Generic_Name = 'Lisinopril' AND Description = '10mg tablets' LIMIT 1), 15.00, 1.50, '2025-11-25', '2022-11-25', 7);
+
+INSERT INTO Drug_Square (Medicine_Name, Category_ID, Strip_Price, Unit_Price, Expire_Date, Manufacturing_Date, representative_id)
+VALUES
+('Lisiflow', (SELECT ID FROM Category WHERE Generic_Name = 'Lisinopril' AND Description = '10mg tablets' LIMIT 1), 15.00, 1.50, '2025-11-25', '2022-11-25', 8);
+
+INSERT INTO Drug_Square (Medicine_Name, Category_ID, Strip_Price, Unit_Price, Expire_Date, Manufacturing_Date, representative_id)
+VALUES
+('Lisimax', (SELECT ID FROM Category WHERE Generic_Name = 'Lisinopril' AND Description = '10mg tablets' LIMIT 1), 15.00, 1.50, '2025-11-25', '2022-11-25', 11);
+
+INSERT INTO Drug_Square (Medicine_Name, Category_ID, Strip_Price, Unit_Price, Expire_Date, Manufacturing_Date, representative_id)
+VALUES
+('PriliRise', (SELECT ID FROM Category WHERE Generic_Name = 'Lisinopril' AND Description = '10mg tablets' LIMIT 1), 15.00, 1.50, '2025-11-25', '2022-11-25', 12);
