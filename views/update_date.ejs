@@ -1,0 +1,132 @@
+<!-- Inside your update_date.ejs file -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Manufacturing and Expiration Date | Square Pharmaceuticals</title>
+  <style>
+    body {
+      background: linear-gradient(45deg, #005500, #ffffff);
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffffff;
+      color: #005500;
+      font-size: 24px;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .header::after {
+      content: '';
+      display: block;
+      height: 3px;
+      background-color: #005500;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      transition: width 0.5s ease-in-out;
+    }
+
+    .header:hover::after {
+      width: 100%;
+    }
+
+    .update-form {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin: 10px 0;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+    }
+
+    .error-message {
+      color: #ff0000;
+      margin-top: 10px;
+    }
+
+    .btn-container {
+      text-align: center;
+    }
+
+    .btn-submit {
+      padding: 10px 20px;
+      background-color: #005500;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">Square Pharmaceuticals</div>
+
+  <h1>Update Manufacturing and Expiration Date</h1>
+
+  <div class="update-form">
+    <form action="/update_date/<%= drug.id %>" method="post">
+      <!-- Add form fields for manufacturing date and expiration date -->
+      <label for="manufacturing_date">Manufacturing Date:</label>
+      <input type="date" id="manufacturing_date" name="manufacturing_date" value="<%= drug.manufacturing_date %>" required>
+
+      <label for="expire_date">Expiration Date:</label>
+      <input type="date" id="expire_date" name="expire_date" value="<%= drug.expire_date %>" required>
+
+      <!-- Display error message if expiration date is before manufacturing date -->
+      <div class="error-message" id="date-error"></div>
+
+      <div class="btn-container">
+        <button type="submit" class="btn-submit">Update Manufacturing and Expiration Date</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Add JavaScript to validate manufacturing date and expiration date -->
+  <script>
+    const expireDateInput = document.getElementById('expire_date');
+    const manufacturingDateInput = document.getElementById('manufacturing_date');
+    const dateErrorDiv = document.getElementById('date-error');
+
+    expireDateInput.addEventListener('change', () => {
+      validateDates();
+    });
+
+    manufacturingDateInput.addEventListener('change', () => {
+      validateDates();
+    });
+
+    function validateDates() {
+      const expireDate = new Date(expireDateInput.value);
+      const manufacturingDate = new Date(manufacturingDateInput.value);
+
+      if (manufacturingDate >= expireDate) {
+        dateErrorDiv.textContent = 'Manufacturing date should be less than the expiration date.';
+      } else {
+        dateErrorDiv.textContent = '';
+      }
+    }
+  </script>
+</body>
+</html>

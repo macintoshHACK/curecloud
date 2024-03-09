@@ -1,0 +1,40 @@
+<!-- search_cat_pharma_cus.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="/styles.css">
+    <!-- Add any additional styles or scripts if needed -->
+</head>
+<body>
+    <h1>Search Results</h1>
+
+    <!-- Display pharmacy ID and search query -->
+    <p><strong>Pharmacy ID:</strong> <%= pharmacyId %></p>
+    <p><strong>Search Query:</strong> <%= searchQuery %></p>
+
+    <ul>
+        <% categories.forEach(category => { %>
+            <li>
+                <!-- Display category attributes -->
+                <strong>Category ID:</strong> <%= category.id %><br>
+                <strong>Category Name:</strong> <%= category.generic_name %><br>
+                <strong>Description:</strong> <%= category.description %><br>
+                <!-- Add other attributes as needed -->
+                <a href="/category_details?categoryId=<%= category.id %>&pharmacyId=<%= pharmacyId %>&customerId=<%= customerId %>">check here</a>
+
+                <!-- Clickable link to view details of the category -->
+               <!--- <a href="/category_details?categoryId=<%= category.id %>&pharmacyId=<%= pharmacyId %>">check here </a>-->
+
+                <br><br>
+            </li>
+        <% }) %>
+    </ul>
+
+    <!-- Back to home link or other navigation links -->
+    <a href="/">Back to Home</a>
+</body>
+</html>

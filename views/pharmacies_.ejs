@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Your existing head section remains the same -->
+    <style>
+        /* Your existing styles remain the same */
+
+        /* Additional styles for the red shade and animation */
+        body {
+            background-color: #877d7d; /* Dark Red background */
+            color: #fff; /* White text color */
+            display: flex; /* Use flexbox */
+            flex-wrap: wrap; /* Wrap items to the next line */
+            justify-content: space-between; /* Distribute items evenly with space between */
+            padding: 20px; /* Add padding */
+        }
+
+        h1 {
+            color: #24201f; /* Orange-Red header color */
+            width: 100%; /* Ensure h1 takes full width */
+            text-align: center; /* Center align h1 */
+            margin-bottom: 20px; /* Add margin below h1 */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex; /* Use flexbox */
+            flex-wrap: wrap; /* Wrap items to the next line */
+            justify-content: space-between; /* Distribute items evenly with space between */
+        }
+
+        li {
+            width: calc(33.33% - 20px); /* Set width to one-third with spacing */
+            margin-bottom: 20px; /* Add bottom margin */
+            background-color: #dea3a3; /* Dark Red background for list items */
+            border: 1px solid #755f5f; /* Slightly darker border color */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease; /* Smooth transition on hover */
+            overflow: hidden; /* Hide overflow content */
+        }
+
+        li:hover {
+            background-color: #fb9191; /* Lighter Red background on hover */
+        }
+
+        img {
+            width: 100%; /* Ensure image takes full width */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Remove any inline spacing */
+        }
+
+        .delete-button {
+            background-color: #946a5a; /* Orange-Red button color */
+            color: #fff; /* White text color */
+            border: none;
+            padding: 10px;
+            border-radius: 0px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth transition on hover */
+        }
+
+        .delete-button:hover {
+            background-color: #454343; /* Darker Red background on button hover */
+        }
+
+        a {
+            display: block;
+            margin-top: 20px; /* Add top margin to the link */
+            text-align: center; /* Center align the link */
+            color: #fff; /* White text color */
+            text-decoration: none; /* Remove underline */
+        }
+    </style>
+</head>
+<body>
+    <h1>All Pharmacies</h1>
+
+    <ul>
+        <% pharmacies.forEach(pharmacy => { %>
+            <li>
+                <img src="<%= pharmacy.photo_path %>" alt="<%= pharmacy.name %> Photo">
+                <%= pharmacy.name %>
+            </li>
+        <% }) %>
+    </ul>
+
+    <a href="/first_page">Back to Home</a>
+
+</body>
+</html>

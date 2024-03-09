@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+  <title>Cure Cloud</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5; /* Light gray background */
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #e91e63; /* Pink header background color */
+      color: #fff; /* White header text color */
+      padding: 20px;
+      text-align: center;
+    }
+
+    .info-container {
+      background-color: #fff; /* White container background */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 500px;
+      color: #333; /* Dark gray text color */
+    }
+
+    .info-container h2 {
+      color: #e91e63; /* Pink heading color */
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .info-container p {
+      margin: 10px 0;
+    }
+
+    .options-container {
+      background-color: #fff; /* White container background */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .options-container a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #333; /* Dark gray button background color */
+      color: #fff; /* White button text color */
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .options-container a:hover {
+      background-color: #555; /* Darker gray button background color on hover */
+    }
+
+    a.back-link {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #e91e63; /* Pink link color */
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Welcome, <%= representative.name %></h1>
+</div>
+
+<div class="info-container">
+  <h2>Your Information:</h2>
+  <p><strong>Name:</strong> <%= representative.name %></p>
+  <p><strong>ID:</strong> <%= representative.id %></p>
+  <p><strong>salary:<%= representative.salary %></strong></p>
+  <!-- Add other columns from medical_representative table as needed -->
+  <p><strong>Designation:</strong> <%= representative.designation %></p>
+  <!-- Add more information here -->
+</div>
+
+<div class="options-container">
+  <!-- Add links or buttons to navigate to other pages -->
+  <a href="/my_pharmacies?representativeId=<%= representative.id %>">My Pharmacies</a>
+  <!-- Add more options as needed -->
+</div>
+
+<a href="/" class="back-link">Back</a>
+
+<!-- Bootstrap JS and Popper.js -->
+</body>
+</html>

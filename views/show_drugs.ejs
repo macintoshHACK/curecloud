@@ -1,0 +1,145 @@
+<!-- Inside your show_drugs.ejs file -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Medicines | Square Pharmaceuticals</title>
+  <style>
+    body {
+      background: linear-gradient(45deg, #005500, #ffffff);
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffffff;
+      color: #005500;
+      font-size: 24px;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .header::after {
+      content: '';
+      display: block;
+      height: 3px;
+      background-color: #005500;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      transition: width 0.5s ease-in-out;
+    }
+
+    .header:hover::after {
+      width: 100%;
+    }
+
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 20px;
+    }
+
+    .drug-card {
+      background-color: #ffffff;
+      color: #005500;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 10px;
+      width: 200px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .drug-card h1 {
+      margin-top: 0;
+      font-size: 18px; /* Reduced font size for the medicine name */
+    }
+
+    .drug-card p {
+      margin: 10px 0;
+      font-size: 18px; 
+    }
+
+    .update-link {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .update-link a {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #005500;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .update-link a:hover {
+      background-color: #003300;
+    }
+    .back-to-home {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #005500;
+      text-decoration: none;
+      font-weight: bold;
+      border: 2px solid #005500;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    .back-to-home:hover {
+      background-color: #005500;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">Square Pharmaceuticals</div>
+
+  <h1>Our Medicines</h1>
+
+  <div class="flex-container">
+    <% drugs.forEach(drug => { %>
+      <div class="drug-card">
+        <h1><%= drug.medicine_name %></h1>
+        <p>Category: <%= drug.gn %></p>
+        
+        <p>Description: <%= drug.descp %></p>
+        <p>Strip Price: <%= drug.strip_price %></p>
+        <p>Unit Price: <%= drug.unit_price %></p>
+        <p>Expire Date: <%= drug.expire_date %></p>
+        <p>Manufacturing Date: <%= drug.manufacturing_date %></p>
+        <!--<p>Quantity: <%= drug.quantity %></p>-->
+       <!-- <p>Remedy: <%= drug.remedies %></p>-->
+
+        
+        <div class="update-link">
+          <a href="/update_medicine/<%= drug.id %>">Update Medicine</a>
+        </div>
+
+        <!-- Add Update Medicine link -->
+        <div class="update-link">
+          <a href="/update_date/<%= drug.id %>">Update Date</a>
+        </div>
+        <div class="update-link">
+          <a href="/delete_medicine/<%= drug.id %>">Delete Medicine</a>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+  <a href="/first_page" class="back-to-home">Back to Home page</a>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Login</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('/images/cus_l.jpg'); /* Adjust path to your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* Ensure the background covers the entire viewport height */
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0); 
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background for input fields */
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+    <!-- Add any additional styles or scripts if needed -->
+</head>
+<body>
+    <div class="header">
+        <h1>Customer Login</h1>
+    </div>
+
+    <div class="login-container">
+        <form action="/customer_login" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <a href="/">Back to Home</a>
+</body>
+</html>

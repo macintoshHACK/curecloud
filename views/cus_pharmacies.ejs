@@ -1,0 +1,103 @@
+<!-- cus_pharmacies.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <title>View Pharmacies</title>
+    <link rel="stylesheet" href="/styles.css">
+   
+    <!-- Add any additional styles or scripts if needed -->
+    <style>
+        .pharmacy-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .pharmacy-item {
+            flex-basis: calc(30% - 20px);
+          
+            margin-bottom: 20px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+            position: relative; 
+        }
+
+        .pharmacy-item:hover {
+            box-shadow: 0 8px 16px rgba(244, 225, 225, 0.5);
+        }
+
+        .pharmacy-item img {
+           max-width: 100%;
+            height: auto;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .pharmacy-item .pharmacy-name {
+        position: absolute; /* Position the pharmacy name absolutely */
+        bottom: 0; /* Align the name to the bottom */
+        left: 0; /* Align the name to the left */
+        width: 100%; /* Make the name span the full width */
+        padding: 10px;
+        background-color: rgba(252, 249, 249, 0.5); /* Semi-transparent background */
+        text-align: center;
+        border-bottom-left-radius: 10px; /* Match border radius of image */
+        border-bottom-right-radius: 10px; /* Match border radius of image */
+    }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Cure Cloud</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/cus_pharmacies?customerId=<%= customerId %>">View Pharmacies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/see_my_order?customerId=<%= customerId %>">View My Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/manufacturer_details?customerId=<%= customerId %>">Manufacturer Details</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/show_cart?customerId=<%= customerId %>">Show Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/customer_update?customerId=<%= customerId %>">Update Profile</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="header">
+        <h1>View Pharmacies</h1>
+    </div>
+    
+    <!-- Display pharmacy list -->
+    <div class="pharmacy-list">
+        <% pharmacies.forEach(pharmacy => { %>
+            <div class="pharmacy-item">
+                <a href="/pharmacy_view?pharmacyId=<%= pharmacy.id %>&customerId=<%= customerId %>">
+                    <img src="<%= pharmacy.photo_path %>" alt="<%= pharmacy.name %>">
+                </a>
+                <div class="pharmacy-name"><%= pharmacy.name %></div>
+            </div>
+        <% }) %>
+    </div>
+
+    <a class="show-cart-link" href="/show_cart?customerId=<%= customerId %>">Show Cart</a>
+    <!-- Back to home link -->
+    <a href="/">Back to Home</a>
+</body>
+</html>

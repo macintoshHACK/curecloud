@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <title>View Pharmacies</title>
+    <link rel="stylesheet" href="/styles.css">
+    <title>See My Orders</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Cure Cloud</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+               
+                <li class="nav-item">
+                    <a class="nav-link" href="/cus_pharmacies?customerId=<%= customerId %>">View Pharmacies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/see_my_order?customerId=<%= customerId %>">View My Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/manufacturer_details?customerId=<%= customerId %>">Manufacturer Details</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/show_cart?customerId=<%= customerId %>">Show Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/customer_update?customerId=<%= customerId %>">Update Profile</a>
+                </li>
+            </ul>
+           
+        </div>
+    </nav>
+    <h1>Customer Orders</h1>
+   <!-- <p>Customer ID: <%= customerId %></p>-->
+
+    <% ordersDetails.forEach((orderDetails, index) => { %>
+        <h2>Order Number <%= index + 1 %></h2>
+        <h2>Order ID: <%= orderDetails[0].order_id %> </h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Drug ID</th>
+                    <th>Medicine Name</th>
+                    <th>Amount Purchased</th>
+                    <th>Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% orderDetails.forEach(order => { %>
+                    <tr>
+                        <td><%= order.drug_id %></td>
+                        <td><%= order.medicine_name %></td>
+                        <td><%= order.amount_purchased %></td>
+                        <td><%= order.cost %></td>
+                       
+                    </tr>
+                <% }); %>
+                <tr>
+                    <td colspan="2">Total Cost:</td>
+                    <td><%= orderDetails[0].totalCost.toFixed(2) %></td>
+                </tr>
+            </tbody>
+        </table>
+
+    
+    <% }); %>
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"
+    ></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"
+    ></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"
+    ></script>
+</body>
+</html>

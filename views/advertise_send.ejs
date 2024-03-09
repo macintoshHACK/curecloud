@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advertise Medicines - Send</title>
+    <!-- Add your head content here -->
+    <style>
+        body {
+            background-color: #e3bebe23; /* Light Gray background */
+            color: #333; /* Dark Gray text color */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+    
+        h1 {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 32px;
+            font-weight: bold;
+            color: #26282b; /* Blue header color */
+        }
+    
+        .medicine-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px;
+            background-color: rgba(205, 67, 67, 0.8); /* Transparent background for flexbox */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        .medicine-item {
+            flex: 0 0 calc(33.33% - 40px); /* Adjust the width as needed */
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);/* White background for each medicine item */
+            border: 1px solid #ddd; /* Light Gray border */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        .medicine-item:hover {
+            transform: translateY(-5px); /* Move the item up on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Increase shadow on hover */
+        }
+    
+        .medicine-details {
+            margin-bottom: 10px;
+        }
+    
+        form {
+            display: inline;
+        }
+    
+        button {
+            background-color: #161716; /* Green button background color */
+            color: #fff; /* White button text color */
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    
+        button:hover {
+            background-color: #494e49; /* Darker green on hover */
+        }
+    
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #242627; /* Blue link color */
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>Advertise Medicines - Send</h1>
+
+    <div class="medicine-list">
+        <ul>
+            <% drugs.forEach(medicine => { %>
+                <li class="medicine-item">
+                    <div class="medicine-details">
+                        <strong>Medicine ID:</strong> <%= medicine.id %><br>
+                        <strong>Medicine Name:</strong> <%= medicine.medicine_name %><br>
+                        <strong>Category ID:</strong> <%= medicine.category_id %><br>
+                    </div>
+                    <form action="/advertise_here" method="get">
+                        <input type="hidden" name="pharmacyId" value="<%= pharmacyId %>">
+                        <input type="hidden" name="medicalRepresentativeId" value="<%= representativeId %>">
+                        <input type="hidden" name="drugId" value="<%= medicine.id %>">
+                        <button type="submit">Advertise Here</button>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+
+    <!-- Back to home link or other navigation links -->
+    <a href="/">Back to Home</a>
+</body>
+</html>

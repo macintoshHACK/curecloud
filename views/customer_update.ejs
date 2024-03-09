@@ -1,0 +1,109 @@
+<!-- customer_update.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Customer</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            color: #008080; /* Teal color */
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #333;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #008080;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #006666;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #008080;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Update Customer</h1>
+
+    <form action="/customer_update" method="post">
+        <input type="hidden" name="id" value="<%= customer.id %>">
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="<%= customer.name %>" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="15" required>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" value="<%= customer.location %>">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="<%= customer.email %>">
+
+        <label for="phone_number">Phone Number:</label>
+        <input type="tel" id="phone_number" name="phone_number" pattern="\d{11}" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
+            <option value="Male" <%= customer.gender === 'Male' ? 'selected' : '' %>>Male</option>
+            <option value="Female" <%= customer.gender === 'Female' ? 'selected' : '' %>>Female</option>
+            <!-- Add more options as needed -->
+        </select>
+
+        <!-- Add other input fields for other customer details -->
+
+        <button type="submit">Update</button>
+    </form>
+        <!-- ... (your existing form content) ... -->
+    </form>
+
+    <a href="/">Back to Home</a>
+</body>
+</html>

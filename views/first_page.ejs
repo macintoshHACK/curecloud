@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First Page | Square Pharma Limited</title>
+  <!-- Include the Google Charts library -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <style>
+    body {
+      background-color: #877d7d; /* Dark gray background */
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Navigation Bar styles (same as before) */
+
+    /* Navigation Bar */
+    nav {
+      background-color: #0f0c09;
+      padding: 10px;
+      color: #fff;
+      text-align: center;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #948d85;
+    }
+
+    /* Main Content */
+    .content {
+      padding: 20px;
+      color: #fff;
+      text-align: center;
+    }
+
+    /* Set the width and height of the chart container */
+    #pieChart {
+      width: 90%;
+      height: 500px; /* Adjust the height as needed */
+      max-width: 800px; /* Set maximum width */
+      margin: 0 auto; /* Center align */
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar (same as before) -->
+  <nav>
+    <a href="/show_drugs"> Our drugs</a>
+    <a href="/add_medicine">Launch new medicine</a>
+    <a href="/pharmacies_">Pharmacies</a>
+    <a href="/medical_representatives">Medical Representatives</a>
+    <a href="/add_mr">Add Medical Representative</a>
+    <a href="/order_req">Order Requests from Pharmacies </a>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h2>Total Sell of Each Pharmacy</h2>
+    <!-- Display the pie chart -->
+    <div id="pieChart"></div>
+  </div>
+
+  <!-- Script to load Google Charts and draw the chart -->
+  <script>
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      // Define the data
+      var data = google.visualization.arrayToDataTable([
+        ['Pharmacy', 'Total Sell'],
+        <% for (var i = 0; i < labels.length; i++) { %>
+          ['<%= pharmacyNames[i] %>', <%= data[i] %>],
+        <% } %>
+      ]);
+
+      // Set chart options
+      var options = {
+        title: 'Total Sell of Each Pharmacy'
+      };
+
+      // Instantiate and draw the chart, passing in options
+      var chart = new google.visualization.PieChart(document.getElementById('pieChart'));
+      chart.draw(data, options);
+    }
+  </script>
+</body>
+</html>

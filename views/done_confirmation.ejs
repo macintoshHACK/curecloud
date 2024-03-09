@@ -1,0 +1,49 @@
+<!-- done_confirmation.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Done Confirmation</title>
+    <link rel="stylesheet" href="/styles.css">
+    <!-- Add any additional styles or scripts if needed -->
+</head>
+<body>
+    <h1>Done Confirmation</h1>
+
+    <ul>
+        <% doneMedicines.forEach((customer, index) => { %>
+            <li>
+                <strong>Customer Name:</strong> <%= customer.cname %><br>
+                <strong>Total Cost:</strong> <%= customer.total_cost %><br>
+
+                <!-- Display individual medicine details -->
+                <ul>
+                    <% for (let i = 0; i < customer.medicine_names.length; i++) { %>
+                        <li>
+                            <strong>Medicine Name:</strong> <%= customer.medicine_names[i] %><br>
+                            <strong>Amount Purchased:</strong> <%= customer.amounts_purchased[i] %><br>
+                            <strong>Cost:</strong> <%= customer.ds_cost[i] %><br>
+                        </li>
+                    <% } %>
+                </ul>
+                <form action="/send_bill" method="post">
+                    <input type="hidden" name="pharmacyId" value="<%= pharmacyId %>">
+                    <input type="hidden" name="customerId" value="<%= customer.customer_id %>">
+                    <input type="hidden" name="totalCost" value="<%= customer.total_cost %>">
+                   
+                    <label for="cusId">Order ID:</label>
+                    <input type="text" id="cusId" name="cus_id" required>
+                    <button type="submit">Send Bill</button>
+                </form>
+
+                <br><br>
+            </li>
+        <% }) %>
+    </ul>
+
+    <!-- Back to home link or other navigation links -->
+    <a href="/">Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Square Pharma Limited</title>
+  <style>
+    body {
+      background: linear-gradient(45deg, #333, #666, #fff);
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0 15px;
+      box-sizing: border-box;
+    }
+
+    #password {
+      position: relative;
+    }
+
+    #eye-icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Square Pharma Limited</h2>
+    <img src="/images/p1.jpg" alt="Square Pharma Limited Logo" style="width: 150px; height: 150px; border-radius: 50%; margin: 15px 0;">
+
+    <form action="/login" method="post">
+      <label for="email">Email:</label>
+      <div id="email">
+        <input type="email" id="emailInput" name="email" required>
+      </div>
+
+      <label for="password">Password:</label>
+      <div id="password">
+        <input type="password" id="passwordInput" name="password" minlength="8" required>
+      
+      </div>
+      
+
+      <button type="submit">Login</button>
+    
+   
+    </form>
+  </div>
+
+  <script>
+    function togglePasswordVisibility() {
+      const passwordInput = document.getElementById('passwordInput');
+      const eyeIcon = document.getElementById('eye-icon');
+
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        eyeIcon.src = '/images/open_eye.jpg';
+      } else {
+        passwordInput.type = 'password';
+        eyeIcon.src = '/images/closed_eye.jpg';
+      }
+    }
+  </script>
+</body>
+</html>

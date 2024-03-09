@@ -1,0 +1,116 @@
+<!-- customer_SIGNUP.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Signup</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('/images/cus1.jpg'); /* Adjust path to your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 125vh; /* Ensure the background covers the entire viewport height */
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0); /* Adjust opacity for the header */
+        }
+
+        .signup-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0); /* Adjust opacity for the form container */
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1); /* Adjust opacity for the input fields */
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+    
+    <!-- Add any additional styles or scripts if needed -->
+</head>
+<body>
+    <div class="header">
+        <h1>Customer Signup</h1>
+    </div>
+
+    <div class="signup-container">
+        <form action="/customer_SIGNUP" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="15" required>
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone_number">Phone Number:</label>
+            <input type="tel" id="phone_number" name="phone_number" pattern="\d{11}" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <!-- Add other gender options as needed -->
+            </select>
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <a href="/">Back to Home</a>
+</body>
+</html>

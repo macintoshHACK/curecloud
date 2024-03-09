@@ -1,0 +1,42 @@
+<!-- order_req.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Requests</title>
+    <link rel="stylesheet" href="/styles.css">
+    <!-- Add any additional styles or scripts if needed -->
+</head>
+<body>
+    <h1>Order Requests</h1>
+
+    <ul>
+        <% orders.forEach(order => { %>
+            <li>
+                <strong>Pharmacy Name:</strong> <%= order.pharmacy_name %><br>
+                <strong>Medicine Name:</strong> <%= order.medicine_name %><br>
+                <strong>Count:</strong> <%= order.count %><br>
+                <strong>Total Price:</strong> <%= order.total_price %><br>
+                
+                <form action="/order_req" method="post">
+                    <input type="hidden" name="pharmacyId" value="<%= order.pharmacy_id %>">
+                    <input type="hidden" name="drugId" value="<%= order.drug_id %>">
+                    <input type="hidden" name="count" value="<%= order.count %>">
+                    <input type="hidden" name="totalPrice" value="<%= order.total_price %>">
+                    <button type="submit">Confirm Order</button>
+                </form>
+               
+            </li>
+            <form action="/delete_order" method="post" style="display: inline;">
+                <input type="hidden" name="pharmacyId" value="<%= order.pharmacy_id %>">
+                <input type="hidden" name="drugId" value="<%= order.drug_id %>">
+                <button type="submit">Delete Order</button>
+            </form>
+        <% }) %>
+    </ul>
+
+    <a href="/">Back to Pharmacy First Page</a>
+</body>
+</html>

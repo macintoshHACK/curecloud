@@ -1,0 +1,97 @@
+/* public/styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #76685d; /* Dark Green */
+    color: white;
+    font-weight: bold;
+}
+
+td {
+    background-color: #f9f9f9; /* Light Gray */
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+.highlighted-text {
+    color: red; /* Change the color to your preferred highlight color */
+    font-weight: bold; /* Make the text bold */
+  }
+  
+
+.add-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+    background-color: #45a049; /* Darker Green */
+}
+form {
+    width: 50%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

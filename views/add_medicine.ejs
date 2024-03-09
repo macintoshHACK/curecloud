@@ -1,0 +1,176 @@
+<!-- views/addMedicine.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Medicine | Square Pharmaceuticals Limited</title>
+    <style>
+        body {
+            background-color: #d2dde5; /* Sky Blue background */
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #001f3f; /* Deep Blue text color */
+        }
+
+        h1 {
+            text-align: center;
+            padding: 10px;
+            font-size: 32px;
+            font-weight: bold;
+            animation: fadeIn 3s; /* Add fade-in animation */
+        }
+        h2 {
+            text-align: center;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            animation: fadeIn 2s; /* Add fade-in animation */
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff; /* White form background */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1.5s; /* Add fade-in-up animation */
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #3498db; /* Sky Blue border */
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #3498db; /* Sky Blue button background */
+            color: #fff; /* White button text */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #217dbb; /* Darker Blue on hover */
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #001f3f; /* Deep Blue link color */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Animation keyframes */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Error message style */
+        .error-message {
+            color: #ff0000; /* Red text color for error message */
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Square Pharmaceuticals Limited</h1>
+    <h2>Launching Medicine</h2>
+
+    <form id="medicineForm" action="/add_medicine" method="POST" onsubmit="return validateForm()">
+        <label for="medicineName">Medicine Name:</label>
+        <input type="text" id="medicineName" name="medicineName" required>
+
+        <label for="unitPrice">Unit Price:</label>
+        <input type="number" id="unitPrice" name="unitPrice" step="0.01" required>
+
+        <label for="expireDate">Expire Date:</label>
+        <input type="date" id="expireDate" name="expireDate" required>
+
+        <label for="manufacturingDate">Manufacturing Date:</label>
+        <input type="date" id="manufacturingDate" name="manufacturingDate" required>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required>
+
+        <label for="generic_name">Generic_name:</label>
+        <input type="text" id="generic_name" name="generic_name">
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description">
+
+        <label for="remedies">Remedies:</label>
+        <input type="text" id="remedies" name="remedies">
+
+        <label for="representative">Medical Representative:</label>
+        <select id="representative" name="representative" required>
+            <% representatives.forEach(rep => { %>
+                <option value="<%= rep.id %>"><%= rep.name %></option>
+            <% }) %>
+        </select>
+        <!-- Error message container for expiration date validation -->
+        <div id="expirationError" class="error-message"></div>
+
+        <!-- Submit Button -->
+        <button type="submit">Launch Medicine</button>
+    </form>
+
+    <a href="/first_page">Back to Home page</a>
+
+    <script>
+        function validateForm() {
+            // Fetch values of date fields
+            var manufacturingDate = new Date(document.getElementById("manufacturingDate").value);
+            var expireDate = new Date(document.getElementById("expireDate").value);
+
+            // Check if expiration date is after manufacturing date
+            if (expireDate <= manufacturingDate) {
+                // Display error message
+                document.getElementById("expirationError").innerText = "Expiration date should be after manufacturing date.";
+                
+                // Prevent form submission
+                return false;
+            } else {
+                // Clear any existing error message
+                document.getElementById("expirationError").innerText = "";
+                
+                // Allow form submission
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>

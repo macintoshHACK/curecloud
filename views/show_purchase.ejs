@@ -1,0 +1,119 @@
+
+<html lang="en">
+  <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  
+      <link rel="stylesheet" href="/styles.css">
+  
+      <title>Cure Cloud</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">Cure Cloud</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/show_dashboard?pharmacyName=<%= pharmacyName %>"
+              >Dashboard <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMedicines" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Medicines
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMedicines">
+              <a class="dropdown-item" href="/show_medicines?pharmacyName=<%= pharmacyName %>">View Medicines</a>
+              <a class="dropdown-item" href="/show_generics?pharmacyName=<%= pharmacyName %>">View Generics</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSales" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sales
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownSales">
+              <a class="dropdown-item" href="/view_sales?pharmacyName=<%= pharmacyName %>">Sales Report</a>
+              <a class="dropdown-item" href="/customer_order?pharmacyName=<%= pharmacyName %>">Manage Sales</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPurchases" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Purchases
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownPurchases">
+              <a class="dropdown-item" href="/show_purchase?pharmacyName=<%= pharmacyName %>">Purchase Report</a>
+              <a class="dropdown-item" href="/buy_medicine?pharmacyName=<%= pharmacyName %>">Add Purchases</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/advertise_mr?pharmacyName=<%= pharmacyName %>">Representative's Medicinal Offers</a>
+          </li>
+        </ul>
+        <span class="navbar-text">
+          <a href="pharma_first?pharmacyName=<%= pharmacyName %>" class="highlighted-text"><%= pharmacyName %></a>
+        </span>
+      </div>
+    </nav>
+
+ <!---- <script
+  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"
+  ></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous"
+  ></script>-->
+    <!-- Purchase Report Section -->
+    <div class="container mt-4">
+        <h2 class="mb-4">Purchase Report</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Pharmacy Name</th>
+                    <th scope="col">Drug Name</th>
+                    <th scope="col">Drug Generics</th>
+                    <th scope="col">Count</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">Purchase Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% purchases.forEach(purchase => { %>
+                <tr>
+                    <td><%= purchase.id %></td>
+                    <td><%= pharmacyName %></td>
+                    <td><%= purchase.medicine_name %></td>
+                    <td><%= purchase.drug_generics %></td>
+                    <td><%= purchase.count %></td>
+                    <td>$<%= purchase.total_price %></td>
+                    <td><%= purchase.purchase_date %></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+  </html>

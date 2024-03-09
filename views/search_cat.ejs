@@ -1,0 +1,34 @@
+<!-- search_cat.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add your head content here -->
+</head>
+<body>
+    <h1>Search Results</h1>
+
+    <!-- Display search query if defined -->
+    <% if (searchQuery) { %>
+        <p><strong>Search Query:</strong> <%= searchQuery %></p>
+    <% } %>
+
+    <ul>
+        <% searchResults.forEach(category => { %>
+            <li>
+                <!-- Display category attributes -->
+                <strong>Category ID:</strong> <%= category.id %><br>
+                <strong>Category Name:</strong> <%= category.generic_name %><br>
+                <strong>Description:</strong> <%= category.description %><br>
+                <!-- Add other attributes as needed -->
+                <a href="/view_medicines?pharmacyId=<%= pharmacyId %>&categoryId=<%= category.id %>&customerId=<%= customerId %>">View Medicines</a>
+                <br><br>
+            </li>
+        <% }) %>
+    </ul>
+
+    <!-- Back to home link or other navigation links -->
+    <a href="/">Back to Home</a>
+</body>
+</html>
+s
